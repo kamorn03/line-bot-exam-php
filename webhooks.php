@@ -46,7 +46,7 @@ if (!is_null($events['events'])) {
                   }
                 ]}';
 
-
+            $quick = json_decode($quick);
 
 
 
