@@ -21,21 +21,23 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 
-            $data = [
-                items => array(["{
-                    \"type\": \"action\",
-                    \"action\": {
-                      \"type\": \"cameraRoll\",
-                      \"label\": \"Camera Roll\"
-                    }
-                  }",])
-            ];
+            $data = '{
+                        items: [
+                          {
+                            type: "action",
+                            action: {
+                              type: "location",
+                              label: "Send Location"
+                            }
+                          }
+                        ]
+                  }';
 
 			// Build message to reply back // code!
 			$messages = [
 				'type' => 'text',
 				'text' => $text,
-                //'quickReply' => $data
+                'quickReply' => $data
             ];
 
 
