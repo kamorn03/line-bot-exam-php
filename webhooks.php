@@ -22,94 +22,212 @@ if (!is_null($events['events'])) {
 
             // 2. เพิ่ม json
             // 3. เปลี่ยน ถ้ามี request
+            $quick = '';
 
-            $quick = '{
-                "items": [
-                  {
-                    "type": "action",
-                    "action": {
-                      "type": "cameraRoll",
-                      "label": "Camera Roll"
-                    }
-                  },
-                  {
-                    "type": "action",
-                    "action": {
-                      "type": "camera",
-                      "label": "Camera"
-                    }
-                  },
-                  {
-                    "type": "action",
-                    "action": {
-                      "type": "location",
-                      "label": "Location"
-                    }
-                  },
-                  {
-                    "type": "action",
-                    "imageUrl": "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png",
-                    "action": {
-                      "type": "message",
-                      "label": "Message",
-                      "text": "Hello World!"
-                    }
-                  },
-                  {
-                    "type": "action",
-                    "action": {
-                      "type": "postback",
-                      "label": "Postback",
-                      "data": "action=buy&itemid=123",
-                      "displayText": "Buy"
-                    }
-                  },
-                  {
-                    "type": "action",
-                    "imageUrl": "https://icla.org/wp-content/uploads/2018/02/blue-calendar-icon.png",
-                    "action": {
-                      "type": "datetimepicker",
-                      "label": "Datetime Picker",
-                      "data": "storeId=12345",
-                      "mode": "datetime",
-                      "initial": "2018-08-10t00:00",
-                      "max": "2018-12-31t23:59",
-                      "min": "2018-08-01t00:00"
-                    }
-                  },
-                  {
-                    "type": "action",
-                    "imageUrl": "https://f.ptcdn.info/716/040/000/o3npyu1b2ovxUqEPxDb-o.jpg",
-                    "action": {
-                      "type": "message",
-                      "label": "วันรับเงินเดือน",
-                      "text": "วันรับเงินเดือน"
-                    }
-                  },
-                  {
-                    "type": "action",
-                    "imageUrl": "https://f.ptcdn.info/716/040/000/o3npyu1b2ovxUqEPxDb-o.jpg",
-                    "action": {
-                      "type": "message",
-                      "label": "วันหยุด",
-                      "text": "วันหยุด"
-                    }
-                  },
-                  {
-                    "type": "action",
-                    "imageUrl": "https://f.ptcdn.info/716/040/000/o3npyu1b2ovxUqEPxDb-o.jpg",
-                    "action": {
-                      "type": "message",
-                      "label": "วันพระ",
-                      "text": "วันพระ"
-                    }
-                  }
-                ]
-              }';
+            if($event['message']['text'] != "วันพระ" && $event['message']['text'] != "วันรับเงินเดือน" && $event['message']['text'] != "วันหยุด"){
+                $quick = '{
+                            "items": [
+                              {
+                                "type": "action",
+                                "action": {
+                                  "type": "cameraRoll",
+                                  "label": "Camera Roll"
+                                }
+                              },
+                              {
+                                "type": "action",
+                                "action": {
+                                  "type": "camera",
+                                  "label": "Camera"
+                                }
+                              },
+                              {
+                                "type": "action",
+                                "action": {
+                                  "type": "location",
+                                  "label": "Location"
+                                }
+                              },
+                              {
+                                "type": "action",
+                                "imageUrl": "https://cdn1.iconfinder.com/data/icons/mix-color-3/502/Untitled-1-512.png",
+                                "action": {
+                                  "type": "message",
+                                  "label": "Message",
+                                  "text": "Hello World!"
+                                }
+                              },
+                              {
+                                "type": "action",
+                                "action": {
+                                  "type": "postback",
+                                  "label": "Postback",
+                                  "data": "action=buy&itemid=123",
+                                  "displayText": "Buy"
+                                }
+                              },
+                              {
+                                "type": "action",
+                                "imageUrl": "https://icla.org/wp-content/uploads/2018/02/blue-calendar-icon.png",
+                                "action": {
+                                  "type": "datetimepicker",
+                                  "label": "Datetime Picker",
+                                  "data": "storeId=12345",
+                                  "mode": "datetime",
+                                  "initial": "2018-08-10t00:00",
+                                  "max": "2018-12-31t23:59",
+                                  "min": "2018-08-01t00:00"
+                                }
+                              },
+                              {
+                                "type": "action",
+                                "imageUrl": "https://f.ptcdn.info/716/040/000/o3npyu1b2ovxUqEPxDb-o.jpg",
+                                "action": {
+                                  "type": "message",
+                                  "label": "วันรับเงินเดือน",
+                                  "text": "วันรับเงินเดือน"
+                                }
+                              },
+                              {
+                                "type": "action",
+                                "imageUrl": "https://f.ptcdn.info/716/040/000/o3npyu1b2ovxUqEPxDb-o.jpg",
+                                "action": {
+                                  "type": "message",
+                                  "label": "วันหยุด",
+                                  "text": "วันหยุด"
+                                }
+                              },
+                              {
+                                "type": "action",
+                                "imageUrl": "https://f.ptcdn.info/716/040/000/o3npyu1b2ovxUqEPxDb-o.jpg",
+                                "action": {
+                                  "type": "message",
+                                  "label": "วันพระ",
+                                  "text": "วันพระ"
+                                }
+                              }
+                            ]
+                          }';
+
+            }else{
+                switch ($event['message']['text']) {
+                    case "วันพระ":
+                        $quick = '{
+                            "items": [
+                             {
+                                "type": "action",
+                                "imageUrl": "https://f.ptcdn.info/716/040/000/o3npyu1b2ovxUqEPxDb-o.jpg",
+                                "action": {
+                                  "type": "message",
+                                  "label": "วิสาขบูชา",
+                                  "text": "วิสาขบูชา"
+                                }
+                              },
+                              {
+                                "type": "action",
+                                "imageUrl": "https://f.ptcdn.info/716/040/000/o3npyu1b2ovxUqEPxDb-o.jpg",
+                                "action": {
+                                  "type": "message",
+                                  "label": "มาฆบูชา",
+                                  "text": "มาฆบูชา"
+                                }
+                              },
+                              {
+                                "type": "action",
+                                "imageUrl": "https://f.ptcdn.info/716/040/000/o3npyu1b2ovxUqEPxDb-o.jpg",
+                                "action": {
+                                  "type": "message",
+                                  "label": "อาสารหบูชา",
+                                  "text": "อาสารหบูชา"
+                                }
+                              }
+                            ]
+                          }';
+                        break;
+                    case "วันรับเงินเดือน":
+                        $quick = '{
+                            "items": [
+                             {
+                                "type": "action",
+                                "imageUrl": "https://f.ptcdn.info/716/040/000/o3npyu1b2ovxUqEPxDb-o.jpg",
+                                "action": {
+                                  "type": "message",
+                                  "label": "28",
+                                  "text": "28"
+                                }
+                              },
+                              {
+                                "type": "action",
+                                "imageUrl": "https://f.ptcdn.info/716/040/000/o3npyu1b2ovxUqEPxDb-o.jpg",
+                                "action": {
+                                  "type": "message",
+                                  "label": "30",
+                                  "text": "30"
+                                }
+                              },
+                              {
+                                "type": "action",
+                                "imageUrl": "https://f.ptcdn.info/716/040/000/o3npyu1b2ovxUqEPxDb-o.jpg",
+                                "action": {
+                                  "type": "message",
+                                  "label": "31",
+                                  "text": "31"
+                                }
+                              }
+                            ]
+                          }';
+                        break;
+                    case "วันหยุด":
+                        $quick = '{
+                            "items": [
+                             {
+                                "type": "action",
+                                "imageUrl": "https://f.ptcdn.info/716/040/000/o3npyu1b2ovxUqEPxDb-o.jpg",
+                                "action": {
+                                  "type": "message",
+                                  "label": "นักขัตฤกษ์",
+                                  "text": "นักขัตฤกษ์"
+                                }
+                              },
+                              {
+                                "type": "action",
+                                "imageUrl": "https://f.ptcdn.info/716/040/000/o3npyu1b2ovxUqEPxDb-o.jpg",
+                                "action": {
+                                  "type": "message",
+                                  "label": "ลาป่วย",
+                                  "text": "ลาป่วย"
+                                }
+                              },
+                              {
+                                "type": "action",
+                                "imageUrl": "https://f.ptcdn.info/716/040/000/o3npyu1b2ovxUqEPxDb-o.jpg",
+                                "action": {
+                                  "type": "message",
+                                  "label": "ลากิจ",
+                                  "text": "ลากิจ"
+                                }
+                              }
+                            ]
+                          }';
+                        break;
+                    default:
+                        $quick = '{
+                            "items": [
+                             {
+                                "type": "action",
+                                "imageUrl": "https://f.ptcdn.info/716/040/000/o3npyu1b2ovxUqEPxDb-o.jpg",
+                                "action": {
+                                  "type": "message",
+                                  "label": "กลับ",
+                                  "text": "กลับ"
+                                }
+                              }
+                            ]
+                          }';
+                }
+            }
 
             $quick = json_decode($quick);
-
-
 
 			// Build message to reply back
 			$messages = [
