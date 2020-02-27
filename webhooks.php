@@ -40,7 +40,7 @@ if (!is_null($events['events'])) {
 			$messages = [
 				'type' => 'text',
 				'text' => $text,
-                'quickReply'=> $quick_reply
+                //'quickReply'=> $quick_reply
 			];
 
 
