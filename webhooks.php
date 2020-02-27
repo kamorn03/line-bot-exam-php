@@ -114,7 +114,7 @@ if (!is_null($events['events'])) {
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $text." - event - [ ".$event['type']." ]",
+				'text' => $text." - event - [ ".json_encode($event)." ]",
                 'quickReply' => $quick
 			];
 
