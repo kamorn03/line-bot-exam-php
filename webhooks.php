@@ -22,20 +22,20 @@ if (!is_null($events['events'])) {
 
 
             $data = [
-                "items"=>[
-                    "type"=> "action",
-                    "action"=> [
-                        "type"=> "cameraRoll",
-                        "label"=> "Camera Roll"
-                    ]
-                ],
+                items => array(["{
+                    \"type\": \"action\",
+                    \"action\": {
+                      \"type\": \"cameraRoll\",
+                      \"label\": \"Camera Roll\"
+                    }
+                  }",])
             ];
 
 			// Build message to reply back // code!
 			$messages = [
 				'type' => 'text',
 				'text' => $text,
-                //'quickReply' => $data
+                'quickReply' => $data
             ];
 
 
