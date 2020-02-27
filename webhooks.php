@@ -27,12 +27,39 @@ if (!is_null($events['events'])) {
 				'text' => $text
 			];
 
+			$quick_reply = "{
+                items: [
+                   {
+                    \"type\": \"action\",
+                    \"action\": {
+                      \"type\": \"cameraRoll\",
+                      \"label\": \"Camera Roll\"
+                    }
+                  },
+                  {
+                    \"type\": \"action\",
+                    \"action\": {
+                      \"type\": \"camera\",
+                      \"label\": \"Camera\"
+                    }
+                  },
+                  {
+                    \"type\": \"action\",
+                    \"action\": {
+                      \"type\": \"location\",
+                      \"label\": \"Location\"
+                    }
+                  },
+                ]
+            }";
+
 
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
 				'replyToken' => $replyToken,
 				'messages' => [$messages],
+                'quickReply'=> $quick_reply
 			];
 			$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
