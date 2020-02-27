@@ -20,7 +20,9 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
-            // เพิ่ม json
+            // 2. เพิ่ม json
+            // 3. เปลี่ยน ถ้ามี request
+
             $quick = '{
                 "items": [
                   {
@@ -112,7 +114,7 @@ if (!is_null($events['events'])) {
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $text,
+				'text' => $text." - event - [ ".$event['type']." ]",
                 'quickReply' => $quick
 			];
 
