@@ -20,11 +20,41 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
+            // เพิ่ม json
+            $quick = '{
+                "items": [
+                  {
+                    "type": "action",
+                    "action": {
+                      "type": "cameraRoll",
+                      "label": "Camera Roll"
+                    }
+                  },
+                  {
+                    "type": "action",
+                    "action": {
+                      "type": "camera",
+                      "label": "Camera"
+                    }
+                  },
+                  {
+                    "type": "action",
+                    "action": {
+                      "type": "location",
+                      "label": "Location"
+                    }
+                  }
+                ]}';
+
+
+
+
 
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
 				'text' => $text,
+                'quickReply' => $quick
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
