@@ -114,7 +114,7 @@ if (!is_null($events['events'])) {
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $text." - event - [ ".json_encode($event)." ]",
+				'text' => $text." - event - [ ". mb_convert_encoding($event['text'], "UTF-8", "UTF-8")." ]",
                 'quickReply' => $quick
 			];
 
