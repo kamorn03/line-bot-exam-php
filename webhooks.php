@@ -20,46 +20,35 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
-
+            $quick_reply = array(
+                'items' => [
+                    'type'=> 'action',
+                    'action'=> [
+                        'type' => "cameraRoll",
+                        'label' => "Camera Roll"
+                    ],
+                ],
+                [
+                    'type'=> 'action',
+                    'action'=> [
+                        'type' => "camera",
+                        'label' => "camera"
+                    ],
+                ]
+            );
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $text
+				'text' => $text,
+                'quickReply'=> $quick_reply
 			];
-
-			$quick_reply = "{
-                items: [
-                   {
-                    \"type\": \"action\",
-                    \"action\": {
-                      \"type\": \"cameraRoll\",
-                      \"label\": \"Camera Roll\"
-                    }
-                  },
-                  {
-                    \"type\": \"action\",
-                    \"action\": {
-                      \"type\": \"camera\",
-                      \"label\": \"Camera\"
-                    }
-                  },
-                  {
-                    \"type\": \"action\",
-                    \"action\": {
-                      \"type\": \"location\",
-                      \"label\": \"Location\"
-                    }
-                  },
-                ]
-            }";
 
 
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
 				'replyToken' => $replyToken,
-				'messages' => [$messages],
-                'quickReply'=> $quick_reply
+				'messages' => [$messages]
 			];
 			$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
