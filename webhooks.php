@@ -121,8 +121,9 @@ if (!is_null($events['events'])) {
                 }';
 
 
-			//$post = json_encode($data);
-            $post = $json_quick;
+			$post = json_encode($data);
+
+           // $post = $json_quick;
 
 
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
