@@ -43,6 +43,40 @@ if (!is_null($events['events'])) {
                 //'quickReply'=> $quick_reply
 			];
 
+			$json_quick = '{
+              "type": "text",
+              "text": "Select your favorite food category or send me your location!",
+              "quickReply": {
+                "items": [
+                  {
+                    "type": "action",
+                    "imageUrl": "https://example.com/sushi.png",
+                    "action": {
+                      "type": "message",
+                      "label": "Sushi",
+                      "text": "Sushi"
+                    }
+                  },
+                  {
+                    "type": "action",
+                    "imageUrl": "https://example.com/tempura.png",
+                    "action": {
+                      "type": "message",
+                      "label": "Tempura",
+                      "text": "Tempura"
+                    }
+                  },
+                  {
+                    "type": "action", 
+                    "action": {
+                      "type": "location",
+                      "label": "Send location"
+                    }
+                  }
+                ]
+              }
+            }';
+
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
@@ -50,7 +84,8 @@ if (!is_null($events['events'])) {
 				'messages' => [$messages]
 			];
 
-			$post = json_encode($data);
+			//$post = json_encode($data);
+            $post = $json_quick;
 
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
