@@ -212,13 +212,11 @@ if (!is_null($events['events'])) {
                         break;
                     case "Location":
                         $quick = '{
-                                {
                                 "type": "action",
                                 "action": {
                                   "type": "location",
                                   "label": "Location"
                                 }
-                              },
                           }';
                         break;
                     default:
