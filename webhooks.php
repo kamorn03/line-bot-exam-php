@@ -210,6 +210,39 @@ if (!is_null($events['events'])) {
                             ]
                           }';
                         break;
+                    case "checkpoint":
+                        $quick = '{
+                            "items": [
+                             {
+                                "type": "action",
+                                "imageUrl": "https://f.ptcdn.info/716/040/000/o3npyu1b2ovxUqEPxDb-o.jpg",
+                                "action": {
+                                  "type": "message",
+                                  "label": "นักขัตฤกษ์",
+                                  "text": "นักขัตฤกษ์"
+                                }
+                              },
+                              {
+                                "type": "action",
+                                "imageUrl": "https://f.ptcdn.info/716/040/000/o3npyu1b2ovxUqEPxDb-o.jpg",
+                                "action": {
+                                  "type": "message",
+                                  "label": "ลาป่วย",
+                                  "text": "ลาป่วย"
+                                }
+                              },
+                              {
+                                "type": "action",
+                                "imageUrl": "https://f.ptcdn.info/716/040/000/o3npyu1b2ovxUqEPxDb-o.jpg",
+                                "action": {
+                                  "type": "message",
+                                  "label": "ลากิจ",
+                                  "text": "ลากิจ"
+                                }
+                              }
+                            ]
+                          }';
+                        break;
                     default:
                         $quick = '{
                             "items": [
