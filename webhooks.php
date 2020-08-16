@@ -222,17 +222,16 @@ if (!is_null($events['events'])) {
                     default:
                         $quick = '{
                             "items": [
-                             {
+                                {
                                 "type": "action",
-                                "imageUrl": "https://f.ptcdn.info/716/040/000/o3npyu1b2ovxUqEPxDb-o.jpg",
                                 "action": {
-                                  "type": "message",
-                                  "label": "กลับ",
-                                  "text": "กลับ"
+                                  "type": "location",
+                                  "label": "Location"
                                 }
-                              }
+                              },
                             ]
                           }';
+                        break;
                 }
             }
 
