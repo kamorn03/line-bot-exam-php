@@ -290,6 +290,16 @@ if (!is_null($events['events'])) {
                 'text' => json_encode($event['message'])
                 /*." - event - [ ".json_encode($events)." ]",*/
             ];
+
+            $messages = [
+                'type' => 'location',
+                /*'text' => json_encode($event['message'])*/
+                "address" => "BDA",
+                'latitude' => 18.759391,
+                'longitude' => 99.037261,
+                /*." - event - [ ".json_encode($events)." ]",*/
+            ];
+
             $replyToken = $event['replyToken'];
 
             // Make a POST Request to Messaging API to reply to sender
