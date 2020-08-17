@@ -261,8 +261,6 @@ if (!is_null($events['events'])) {
                 }
             */
 
-
-
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
@@ -289,7 +287,7 @@ if (!is_null($events['events'])) {
             // Build message to reply back
             $messages = [
                 'type' => 'text',
-                'text' => $event['type']." /  type =>  ". $event['message']['type']
+                'text' => json_encode($event['message'])
                 /*." - event - [ ".json_encode($events)." ]",*/
             ];
             $replyToken = $event['replyToken'];
