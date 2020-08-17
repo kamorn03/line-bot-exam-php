@@ -5,7 +5,6 @@ require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
 
 // $access_token = 'okmwARN83ASD+J8WQfHVzMG+PdtWIQQRTGUUzoUxHtCkH/rAS2O65etqTGUOOe6TKOtUAMvBcrkISpgU3CaJzx3ZMBKb2dFqblVFQ+rG1U7AFwJ6+fZG2dOFKSnkZvx0XMa1ZNTurLgzFiDjX2roAQdB04t89/1O/w1cDnyilFU=';
 
-
 $access_token = 'w1s1+UDrLhXp0BxvN80qKIat358I1yZ1LI5R25BrevIQafF84teyg1SztLocol0dV/S4YJyWY90zP1UJdpE+g7kj2mIUgm4QVM0Ic2P4kxdZWmg1KjbDCcHaWWXKm5rVpd2t20TmtD//94elq4WQowdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
@@ -285,28 +284,22 @@ if (!is_null($events['events'])) {
 		}else{
 
             // Build message to reply back
-
-
-
-
             // $messages =  $event['message'];
 
             $replyToken = $event['replyToken'];
 
-
-            /*$messages = [
+            $messages = [
                 'type' => 'location',
                 'title' => "LINE Company (Thailand) Limited",
                 "address" => "BDA",
                 'latitude' => 18.759391,
                 'longitude' => 99.037261,
+            ];
 
-            ];*/
-
-            $messages = [
+            /*$messages = [
                'type' => 'text',
                'text' => json_encode($event['message']) . " / token / " . $replyToken
-           ];
+            ];*/
 
 
             // Make a POST Request to Messaging API to reply to sender
