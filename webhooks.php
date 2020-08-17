@@ -261,6 +261,12 @@ if (!is_null($events['events'])) {
                     'latitude' => 18.759391,
                     'longitude' => 99.037261,
                 ];
+            }else if($event['message']['text'] == 'get location'){
+                $messages = [
+                    'type' => 'text',
+                    'text' => $text." - event - [ lat :".$event->getLatitude()."lng :".$event->getLongitude()." ]",
+                    'quickReply' => $quick
+                ];
             }
 
 			// Make a POST Request to Messaging API to reply to sender
