@@ -285,15 +285,29 @@ if (!is_null($events['events'])) {
 		}else{
 
             // Build message to reply back
+            /*$messages = [
+                'type' => 'text',
+                'text' => json_encode($event['message'])
+            ];*/
 
-            $messages =  $event['message'];
+            $messages = [
+                'type' => 'location',
+                /*'text' => json_encode($event['message'])*/
+                'title' => "LINE Company (Thailand) Limited",
+                "address" => "BDA",
+                'latitude' => 18.759391,
+                'longitude' => 99.037261,
+                /*." - event - [ ".json_encode($events)." ]",*/
+            ];
+
+            // $messages =  $event['message'];
 
             $replyToken = $event['replyToken'];
 
             // Make a POST Request to Messaging API to reply to sender
-            $url = 'https://api.line.me/v2/bot/message/reply';
+            $url = 'https://api.line.me/v2/bot/message';
             $data = [
-                'replyToken' => $replyToken,
+                'to' => $replyToken,
                 'messages' => [$messages],
             ];
             $post = json_encode($data);
