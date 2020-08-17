@@ -252,13 +252,16 @@ if (!is_null($events['events'])) {
                    "type":"location",
                    "label":"Location"
                 }
-                if($event['message']['text'] == 'checkin'){
-                    $messages = [
-                        "type"=> "location",
-                        "label"=> "Location"
-                    ];
-                }
             */
+            if($event['message']['text'] == 'checkin'){
+                $messages = [
+                    'type' => 'location',
+                    'title' => "LINE Company (Thailand) Limited",
+                    "address" => "BDA",
+                    'latitude' => 18.759391,
+                    'longitude' => 99.037261,
+                ];
+            }
 
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
