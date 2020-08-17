@@ -260,6 +260,10 @@ if (!is_null($events['events'])) {
                     "address" => "BDA",
                     'latitude' => 18.759391,
                     'longitude' => 99.037261,
+                    "action"=> [
+                        "type"=>  "location",
+                        "label"=> "Location"
+                    ]
                 ];
             }else if($event['message']['text'] == 'get location'){
                 $messages = [
@@ -299,10 +303,10 @@ if (!is_null($events['events'])) {
 
             $messages = [
                 'type' => 'location',
-                'title' => "LINE Company (Thailand) Limited",
-                "address" => "BDA",
-                'latitude' => 18.759391,
-                'longitude' => 99.037261,
+                'title' => $event['message']['address'],
+                "address" => $event['message']['address'],
+                'latitude' => $event['message']['latitude'],
+                'longitude' => $event['message']['longitude'],
             ];
 
             /*$messages = [
