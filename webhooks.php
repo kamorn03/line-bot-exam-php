@@ -289,7 +289,7 @@ if (!is_null($events['events'])) {
             // Build message to reply back
             $messages = [
                 'type' => 'text',
-                'text' => $event['type']
+                'text' => $event['type']." /  type =>  ". $event['message']['type']
                 /*." - event - [ ".json_encode($events)." ]",*/
             ];
             $replyToken = $event['replyToken'];
