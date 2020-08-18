@@ -309,11 +309,26 @@ if (!is_null($events['events'])) {
                 'longitude' => $event['message']['longitude'],
             ];
 
+            // http://127.0.0.1:8000/add-markers
+            $url_save = 'https://0b6dce2a0d98.ngrok.io/add-markers';
+            $save_curl = curl_init();
+            curl_setopt($save_curl, CURLOPT_URL,$url_save);
+            curl_setopt($save_curl, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS,http_build_query(array(
+                'title' => $event['message']['address'],
+                'address' => $event['message']['address'],
+                'latitude' => $event['message']['latitude'],
+                'longitude' => $event['message']['longitude'],
+                'line_user_id' => $event['source']['userId']
+            )));
+            curl_setopt($save_curl, CURLOPT_RETURNTRANSFER, true);
+            $server_output = curl_exec($save_curl);
+            curl_close ($save_curl);
+
             /*$messages = [
                'type' => 'text',
                'text' => json_encode($event['message']) . " / token / " . $replyToken
             ];*/
-
 
             // Make a POST Request to Messaging API to reply to sender
             $url = 'https://api.line.me/v2/bot/message/reply';
