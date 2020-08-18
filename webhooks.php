@@ -314,7 +314,7 @@ if (!is_null($events['events'])) {
             $save_curl = curl_init();
             curl_setopt($save_curl, CURLOPT_URL,$url_save);
             curl_setopt($save_curl, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS,http_build_query(array(
+            curl_setopt($save_curl, CURLOPT_POSTFIELDS,http_build_query(array(
                 'title' => $event['message']['address'],
                 'address' => $event['message']['address'],
                 'latitude' => $event['message']['latitude'],
