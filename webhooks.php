@@ -310,7 +310,7 @@ if (!is_null($events['events'])) {
             ];
 
             // http://127.0.0.1:8000/add-markers
-            $url_save = 'https://0b6dce2a0d98.ngrok.io/add-markers';
+            $url_save = 'https://uptransit.bda.co.th/add-markers';
             $save_curl = curl_init();
             curl_setopt($save_curl, CURLOPT_URL,$url_save);
             curl_setopt($save_curl, CURLOPT_POST, 1);
